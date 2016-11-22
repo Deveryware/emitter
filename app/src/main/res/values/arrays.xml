@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dest_keys_array">
+        <item>store position to server (prod.)</item>
+        <item>store position to server (integ.)</item>
+        <item>store to SD Card</item>
+    </string-array>
+    <string-array name="dest_values_array">
+        <item>http://gps.deveryware.net:7077/dwmtr2.0</item>
+        <item>http://gps-integ.deveryware.team:7077/dwmtr2.0</item>
+        <item>file://trace.log</item>
+    </string-array>
+</resources>

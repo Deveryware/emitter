@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_service"
+        android:icon="@drawable/icon_disabled"
+        android:showAsAction="always"
+        android:title="@string/enable_service"/>
+    <item
+        android:id="@+id/menu_start_now"
+        android:icon="@drawable/ic_action_locate"
+        android:showAsAction="ifRoom"
+        android:title="@string/start_service"/>
+    <item
+        android:id="@+id/menu_panic_button"
+        android:showAsAction="ifRoom"
+        android:title="@string/panic_button"/>
+    <item
+        android:id="@+id/menu_history"
+        android:icon="@drawable/ic_action_history"
+        android:showAsAction="never"
+        android:title="@string/history"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="never"
+        android:title="@string/settings"/>
+
+</menu>

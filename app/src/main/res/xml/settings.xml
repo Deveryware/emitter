@@ -1,0 +1,241 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:disableDependentsState="true"
+        android:key="com.deveryware.geoloc_enable"
+        android:summary="@string/update_location_service_summary"
+        android:title="@string/update_location_service" />
+
+    <PreferenceScreen
+        android:summary="@string/start_on_summary"
+        android:title="@string/start_on" >
+        <Preference
+            android:key="com.deveryware.start_service"
+            android:selectable="true"
+            android:summary="@string/start_service_summary"
+            android:title="@string/start_service" />
+        <Preference
+            android:key="com.deveryware.start_on_geofencing"
+            android:selectable="true"
+            android:summary="@string/start_on_geofencing_summary"
+            android:title="@string/start_on_geofencing" />
+
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_geoloc_enable"
+            android:summary="@string/start_on_geoloc_enable_summary"
+            android:title="@string/start_on_geoloc_enable" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_boot"
+            android:summary="@string/start_on_boot_summary"
+            android:title="@string/start_on_boot" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_wifi"
+            android:summary="@string/start_on_wifi_summary"
+            android:title="@string/start_on_wifi" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_mobile"
+            android:summary="@string/start_on_mobile_summary"
+            android:title="@string/start_on_mobile" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_gps"
+            android:summary="@string/start_on_gps_summary"
+            android:title="@string/start_on_gps" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_power_disconnected"
+            android:summary="@string/start_on_power_disconnected_summary"
+            android:title="@string/start_on_power_disconnected" />
+        <CheckBoxPreference
+            android:key="com.deveryware.start_on_power_connected"
+            android:summary="@string/start_on_power_connected_summary"
+            android:title="@string/start_on_power_connected" />
+    </PreferenceScreen>
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="com.deveryware.stop_low_battery"
+        android:summary="@string/stop_on_low_battery_summary"
+        android:title="@string/stop_on_low_battery" />
+    <CheckBoxPreference
+        android:key="com.deveryware.command_by_sms"
+        android:summary="@string/command_by_sms_summary"
+        android:title="@string/command_by_sms" />
+
+    <PreferenceCategory android:title="@string/geolocation" >
+        <ListPreference
+            android:defaultValue="auto"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.provider"
+            android:summary="@string/provider_summary"
+            android:title="@string/provider" />
+
+        <CheckBoxPreference
+            android:dependency="com.deveryware.provider"
+            android:key="com.deveryware.force_agps"
+            android:summary="@string/force_agps_summary"
+            android:title="@string/force_agps" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.inform_privacy"
+            android:summary="@string/inform_privacy_summary"
+            android:title="@string/inform_privacy" />
+
+        <PreferenceScreen
+            android:dependency="com.deveryware.geoloc_enable"
+            android:summary="@string/wake_up_summary"
+            android:title="@string/wake_up" >
+            <CheckBoxPreference
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.wake_up"
+                android:summary="@string/wake_up_summary"
+                android:title="@string/wake_up" />
+
+            <com.deveryware.emitter.ui.preferences.TimeIntervalPreference
+                android:defaultValue="900"
+                android:dependency="com.deveryware.wake_up"
+                android:key="com.deveryware.min_time"
+                android:max="86400"
+                android:summary="@string/min_time_summary"
+                android:title="@string/min_time" />
+
+            <com.deveryware.emitter.ui.preferences.SeekBarPreference
+                android:defaultValue="-1"
+                android:dependency="com.deveryware.wake_up"
+                android:key="com.deveryware.iteration"
+                android:max="10"
+                android:summary="@string/iteration_summary"
+                android:title="@string/iteration" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceScreen
+        android:dependency="com.deveryware.geoloc_enable"
+        android:summary="@string/upload_summary"
+        android:title="@string/upload" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.upload"
+            android:summary="@string/upload_if_network_summary"
+            android:title="@string/upload_if_network" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.upload_on_connection"
+            android:summary="@string/upload_on_connection_summary"
+            android:title="@string/upload_on_connection" />
+
+        <Preference
+            android:key="com.deveryware.synchro"
+            android:selectable="true"
+            android:summary="@string/push_history_summary"
+            android:title="@string/pushing_history" />
+    </PreferenceScreen>
+
+    <PreferenceCategory android:title="@string/running" >
+        <PreferenceScreen
+            android:dependency="com.deveryware.geoloc_enable"
+            android:summary="@string/capture_summary"
+            android:title="@string/capture" >
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.upload_cellid"
+                android:summary="@string/upload_cellid_summary"
+                android:title="@string/upload_cellid" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.upload_wifi"
+                android:summary="@string/upload_wifi_summary"
+                android:title="@string/upload_wifi" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:enabled="false"
+                android:key="com.deveryware.upload_ipinfo"
+                android:summary="@string/upload_ipinfo_summary"
+                android:title="@string/upload_ipinfo" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.emitter.battery_level"
+                android:summary="@string/battery_level_summary"
+                android:title="@string/battery_level" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.emitter.telephony_signal"
+                android:summary="@string/telephony_signal_summary"
+                android:title="@string/telephony_signal" />
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:dependency="com.deveryware.geoloc_enable"
+                android:key="com.deveryware.emitter.display_version"
+                android:summary="@string/version_display_summary"
+                android:title="@string/version_display" />
+        </PreferenceScreen>
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.force_send"
+            android:summary="@string/force_send_summary"
+            android:title="@string/force_send" />
+
+        <com.deveryware.emitter.ui.preferences.SeekBarPreference
+            checkbox="false"
+            android:defaultValue="60"
+            android:dependency="com.deveryware.force_send"
+            android:key="com.deveryware.timeout"
+            android:max="180"
+            android:summary="@string/timeout_summary"
+            android:title="@string/timeout" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.return_last_pos"
+            android:summary="@string/return_last_pos_summary"
+            android:title="@string/return_last_pos" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/perso_informations" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="com.deveryware.delete_after_upload"
+            android:summary="@string/delete_after_upload_summary"
+            android:title="@string/delete_after_upload" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="com.deveryware.events"
+            android:summary="@string/display_notif_summary"
+            android:title="@string/display_notif" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="com.deveryware.display_on_off"
+            android:summary="@string/display_on_off_summary"
+            android:title="@string/display_on_off" />
+
+        <EditTextPreference
+            android:defaultValue="@string/default_url"
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.url"
+            android:summary="@string/url_summary"
+            android:title="@string/url" />
+        <EditTextPreference
+            android:dependency="com.deveryware.geoloc_enable"
+            android:key="com.deveryware.identity"
+            android:summary="@string/my_identity_summary"
+            android:title="@string/my_identity" />
+
+        <Preference
+            android:key="com.deveryware.database"
+            android:selectable="true"
+            android:title="@string/database" />
+        <Preference
+            android:key="com.deveryware.version"
+            android:selectable="false"
+            android:title="@string/version" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

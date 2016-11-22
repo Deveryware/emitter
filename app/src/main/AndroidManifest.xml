@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.deveryware.emitter"
+    android:installLocation="auto"
+    android:sharedUserId="deveryware.emitter" >
+
+    <supports-screens
+        android:anyDensity="true"
+        android:smallScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <application
+        android:name="DwApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".ui.Home"
+            android:icon="@drawable/icon"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.preferences.Settings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.Home" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.SETTINGS" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.histories.Histories"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:launchMode="singleInstance" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.Home" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.HISTORY" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.histories.HistoryView"
+            android:label="@string/history"
+            android:launchMode="singleInstance"
+            android:process=":Map2" />
+        <activity
+            android:name=".ui.DisplayAsk"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".ui.geofencing.Geofencing"
+            android:label="@string/geofencing"
+            android:launchMode="singleInstance"
+            android:process=":Map3" />
+
+        <receiver android:name=".ui.geofencing.StopGeofencing" />
+        <receiver android:name=".broadcast.StartOnGeofencing" />
+
+        <service android:name=".services.UploadQueriesService" />
+        <service android:name=".services.UpdateLocationService" />
+        <service android:name=".widget.WidgetService" />
+
+        <receiver android:name="com.deveryware.emitter.broadcast.ReceivePositionBySMS" >
+            <intent-filter android:priority="40" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".notifications.CommandReceived"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.broadcast.COMMAND_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".notifications.LocationRequested"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.broadcast.LOCATION_REQUESTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".notifications.PrivacyModeSwitched"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.broadcast.PRIVACY_SWITCH" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".notifications.LocationChanged"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.broadcast.LOCATION_CHANGED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.UploadOnConnection" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Answer"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.ANSWER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Locate"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.LOCATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.LocateAt"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.LOCATE_AT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Set"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.SET" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Get"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.GET" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.PrivacyMode" />
+        <receiver
+            android:name=".broadcast.UploadOnce"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.UPLOAD" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnMobileConnection" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnWifiConnection" >
+            <intent-filter>
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StopOnBatteryLow" >
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnLocation" >
+            <intent-filter>
+                <action android:name="android.location.GPS_FIX_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.StartOnSosToughShield"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.BrighterWirelessMain.Main.SOSDown" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnBoot" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnPowerDisconnected" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.StartOnPowerConnected" >
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.StartOnce"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.START" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.AlarmOnce"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.ALARM" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.StopOnce"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.STOP" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Ring"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.RING" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.LstPosReceived"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.broadcast.LASTPOS" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Ask"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.ASK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".broadcast.Notify"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <action android:name="com.deveryware.emitter.NOTIFY" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.Restart" />
+        <receiver android:name=".broadcast.ReceiveCommandBySMS" >
+            <intent-filter android:priority="50" >
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".widget.WidgetProvider" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+        <receiver android:name=".widget.DisplayIconNotification" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".widget.ManagePrivacyMode" />
+        <receiver android:name=".widget.SwitchOnOffWidget" />
+
+        <provider
+            android:name=".provider.EmitterProvider"
+            android:authorities="com.deveryware.emitter.provider.history"
+            android:exported="false" />
+
+        <uses-library android:name="android.test.runner" />
+    </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.deveryware.emitter" />
+
+</manifest>

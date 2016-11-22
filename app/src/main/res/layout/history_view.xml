@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/map"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp" >
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:gravity="center"
+                    android:onClick="showOnMap"
+                    android:paddingLeft="10dp"
+                    android:text="@string/watch_element" />
+
+                <TextView
+                    android:id="@+id/latlon"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/watch_element" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/time" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/time" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/altitude" />
+
+                <TextView
+                    android:id="@+id/altitude"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/altitude" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/speed" />
+
+                <TextView
+                    android:id="@+id/speed"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/speed" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/accuracy" />
+
+                <TextView
+                    android:id="@+id/accuracy"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/accuracy" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/number_of_sat" />
+
+                <TextView
+                    android:id="@+id/number_of_sat"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:text="@string/number_of_sat" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/query"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</ScrollView>

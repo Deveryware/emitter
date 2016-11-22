@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="260dip"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:columnCount="2" >
+
+        <TextView
+            android:layout_width="160dip"
+            android:layout_height="40dip"
+            android:gravity="center|left"
+            android:text="@string/service_status_is"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:gravity="center|right"
+            android:text="@string/status_disabled"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:layout_width="160dip"
+            android:layout_height="40dip"
+            android:gravity="center|left"
+            android:text="@string/provider_used_is"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/provider"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:gravity="center|right"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/timer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnSpan="2"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <SeekBar
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_columnSpan="2"
+            android:max="5" />
+
+        <Spinner
+            android:id="@+id/destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_columnSpan="2"
+            android:prompt="@string/dest_choice" />
+
+        <TextView
+            android:layout_width="160dip"
+            android:layout_height="40dip"
+            android:gravity="center|left"
+            android:text="@string/my_id_is"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/identifiant"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:gravity="center|right"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:layout_width="160dip"
+            android:layout_height="40dip"
+            android:gravity="center|left"
+            android:text="@string/version"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="100dip"
+            android:layout_height="40dip"
+            android:gravity="center|right"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </android.support.v7.widget.GridLayout>
+
+</RelativeLayout>
